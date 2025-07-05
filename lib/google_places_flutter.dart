@@ -43,7 +43,7 @@ class GooglePlaceAutoCompleteTextField extends StatefulWidget {
 
   /// This is expressed in **meters**
   final int? radius;
-
+  Key? key;
   GooglePlaceAutoCompleteTextField(
       {required this.textEditingController,
       required this.googleAPIKey,
@@ -68,16 +68,17 @@ class GooglePlaceAutoCompleteTextField extends StatefulWidget {
       this.latitude,
       this.longitude,
       this.radius,
+      this.key,
       this.formSubmitCallback,
       this.textInputAction,
-      this.clearData});
+      this.clearData}) : super(key: key);
 
   @override
-  _GooglePlaceAutoCompleteTextFieldState createState() =>
-      _GooglePlaceAutoCompleteTextFieldState();
+  GooglePlaceAutoCompleteTextFieldState createState() =>
+      GooglePlaceAutoCompleteTextFieldState();
 }
 
-class _GooglePlaceAutoCompleteTextFieldState
+class GooglePlaceAutoCompleteTextFieldState
     extends State<GooglePlaceAutoCompleteTextField> {
   final subject = new PublishSubject<String>();
   OverlayEntry? _overlayEntry;
